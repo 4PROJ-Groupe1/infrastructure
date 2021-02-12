@@ -32,7 +32,7 @@ resource "esxi_guest" "createVirtualMachine" {
   clone_from_vm      = "TEMPLATE-UBUNTU18"
 
   network_interfaces {
-    virtual_network = "VLAN-PREPROD"
+    virtual_network = "VLAN-PRODUCTION"
     nic_type        = "vmxnet3"
   }
 }
