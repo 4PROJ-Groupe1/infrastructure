@@ -1,0 +1,2 @@
+variable "esxi_password" { 
+}
