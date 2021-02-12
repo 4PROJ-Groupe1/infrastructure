@@ -1,0 +1,15 @@
+---
+- name: installationDockerK8s
+  hosts: vmwareAzure
+  become: true
+
+  pre_tasks:
+    - debug:
+        msg: 'Début installation de docker et K8S'
+
+  roles:
+    - installationDockerK8s
+
+  post_tasks:
+    - debug:
+        msg: 'Installation terminée'

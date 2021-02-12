@@ -1,0 +1,19 @@
+---
+- name: "Installation des paquets"
+  package:
+     name: "{{ item }}"
+     state: "present"
+  with_items:
+    - "htop"
+
+- name: "Création des dossiers kubernetes"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "max"
+    group: "max"
+    mode: u=rwx,g=rwx,o=rwx
+    recurse: yes
+  with_items:
+    - /home/max/kubernetes
+    - /home/max/data
