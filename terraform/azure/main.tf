@@ -101,11 +101,6 @@ resource "azurerm_linux_virtual_machine" "AzureTerraformLinuxVM" {
     azurerm_network_interface.AzureTerraformNIC.id,
   ]
 
-  # admin_password {
-  #   username   = "max"
-  #   password   = "Administrator7*"
-  # }
-
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
