@@ -35,4 +35,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Création des utilisateurs : ansible-playbook --user max --become -k -K -i inventories/production.ini playbooks/users.yml

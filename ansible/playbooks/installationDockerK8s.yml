@@ -1,11 +1,11 @@
 ---
 - name: installationDockerK8s
-  hosts: vmwareAzure
+  hosts: [vmware, azure]
   become: true
 
   pre_tasks:
     - debug:
-        msg: 'Début installation de docker et K8S'
+        msg: 'Installation de docker et K8S'
 
   roles:
     - installationDockerK8s
