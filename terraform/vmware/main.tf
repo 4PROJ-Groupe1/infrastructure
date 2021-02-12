@@ -17,8 +17,9 @@ provider "esxi" {
   esxi_password      = var.esxi_password
 }
 
-resource "esxi_guest" "vmtest02" {
-  guest_name = "vmtest02"
+resource "esxi_guest" "createVirtualMachine" {
+  count = 2
+  guest_name = "4PROJ-UBU18-KUBE${count.index + 1}"
   disk_store = "datastore"
   guestos    = "debian9-64"
 
