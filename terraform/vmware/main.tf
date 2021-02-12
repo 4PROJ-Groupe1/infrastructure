@@ -21,7 +21,7 @@ resource "esxi_guest" "createVirtualMachine" {
   count = 2
   guest_name = "4PROJ-UBU18-KUBE${count.index + 1}"
   disk_store = "datastore"
-  guestos    = "debian9-64"
+  guestos    = "ubuntu-64"
 
   boot_disk_type = "thin"
   boot_disk_size = "16"
