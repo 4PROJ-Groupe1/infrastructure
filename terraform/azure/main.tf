@@ -12,12 +12,13 @@ resource "azurerm_virtual_network" "AzureTerraformNetwork" {
   resource_group_name = azurerm_resource_group.AzureTerraformGroup.name
   location            = azurerm_resource_group.AzureTerraformGroup.location
   address_space       = ["172.32.0.0/16"]
-  depends_on = [azurerm_resource_group.AzureTerraformGroup]
+}
 
-    subnet {
-    name           = "ProductionNetworkSubnet"
-    address_prefix = "172.32.1.0/24"
-  }
+resource "azurerm_subnet" "AzureTerraformSubnetProd" {
+  name                 = "ProductionNetworkSubnet"
+  resource_group_name  = azurerm_resource_group.AzureTerraformGroup.name
+  virtual_network_name = azurerm_virtual_network.AzureTerraformNetwork.name
+  address_prefixes     = ["172.32.1.0/24"]
 }
 
 resource "azurerm_subnet" "AzureTerraformSubnet" {
@@ -74,4 +75,46 @@ resource "azurerm_virtual_network_gateway_connection" "AzureTerraformNetworkGate
   local_network_gateway_id   = azurerm_local_network_gateway.AzureTerraformLocalNetworkGateway.id
 
   shared_key = "a5e6RYu2hg76q21"
+}
+
+resource "azurerm_network_interface" "AzureTerraformNIC" {
+  name                = "NIC-4PROJ-UBU18-KUBE3"
+  location            = azurerm_resource_group.AzureTerraformGroup.location
+  resource_group_name = azurerm_resource_group.AzureTerraformGroup.name
+
+  ip_configuration {
+    name                          = "AzureTerraformNetwork"
+    subnet_id                     = azurerm_subnet.AzureTerraformSubnetProd.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "AzureTerraformLinuxVM" {
+  name                = "4PROJ-UBU18-KUBE3"
+  resource_group_name = azurerm_resource_group.AzureTerraformGroup.name
+  location            = azurerm_resource_group.AzureTerraformGroup.location
+  size                = "Standard_DS1_v2"
+  admin_username      = "max"
+  admin_password      = "Administrator7*"
+  disable_password_authentication = false
+  network_interface_ids = [
+    azurerm_network_interface.AzureTerraformNIC.id,
+  ]
+
+  # admin_password {
+  #   username   = "max"
+  #   password   = "Administrator7*"
+  # }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
 }
