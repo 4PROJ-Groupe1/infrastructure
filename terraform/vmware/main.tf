@@ -29,7 +29,7 @@ resource "esxi_guest" "createVirtualMachine" {
   memsize            = "2048"
   numvcpus           = "1"
   power              = "on"
-  clone_from_vm      = "DEB9-TEMPLATE"
+  clone_from_vm      = "TEMPLATE-UBUNTU18"
 
   network_interfaces {
     virtual_network = "VLAN-PREPROD"
