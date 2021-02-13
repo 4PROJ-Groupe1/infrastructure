@@ -77,10 +77,22 @@
       - kubeadm 
       - kubectl
 
-- name: "Configuration du node ip"
-  lineinfile:
-    path: /etc/default/kubelet
-    line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+- name: "Création dossier .kube pour KUBE1"
+  shell: mkdir -p $HOME/.kube
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1'
+
+- name: "Droits admin kube pour KUBE1"
+  shell: sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1'
+
+- name: "Chown des droits .kube pour KUBE1"
+  shell: sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1'  
+  
+# - name: "Configuration du node ip"
+#   lineinfile:
+#     path: /etc/default/kubelet
+#     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
 
 - name: "Redémarrage de kubelet"
   service:
