@@ -26,8 +26,8 @@ resource "esxi_guest" "createVirtualMachine" {
   boot_disk_type = "thin"
   boot_disk_size = "16"
 
-  memsize            = "2048"
-  numvcpus           = "1"
+  memsize            = "4096"
+  numvcpus           = "2"
   power              = "on"
   clone_from_vm      = "TEMPLATE-UBUNTU18"
 
