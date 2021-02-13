@@ -1,6 +1,6 @@
 ---
 - name: installationDockerK8s
-  hosts: [vmware, azure]
+  hosts: all
   become: true
 
   pre_tasks:
