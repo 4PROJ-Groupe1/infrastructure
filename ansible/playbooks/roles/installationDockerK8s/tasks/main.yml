@@ -32,10 +32,15 @@
     - docker-ce-cli 
     - containerd.io
 
-- name: "Ajout de l'utilisateur max dans le groupe docker"
+- name: "Ajout de les utilisateurs dans le groupe docker"
   user:
-    name: max
+    name: "{{ item }}"
     group: docker
+  with_items:
+    - max
+    - maxence
+    - paul
+    - gaetan
 
 - name: "Suppresion de la ligne swap dans /etc/fstab"
   mount:
