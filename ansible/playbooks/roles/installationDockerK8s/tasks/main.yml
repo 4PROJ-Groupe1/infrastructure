@@ -31,8 +31,6 @@
     - docker-ce 
     - docker-ce-cli 
     - containerd.io
-  notify:
-    - docker status
 
 - name: "Ajout de l'utilisateur max dans le groupe docker"
   user:
