@@ -97,6 +97,10 @@
    - kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
   when: ansible_hostname == '4PROJ-UBU18-KUBE1'
 
+- name: "Changement de NotReady en Ready"
+  shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1' 
+
 - name: "Redémarrage de kubelet"
   service:
     name: kubelet
