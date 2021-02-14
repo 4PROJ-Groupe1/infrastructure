@@ -53,6 +53,18 @@
     - paul
     - gaetan
 
+- name: "Création des dossiers kubernetes"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "max"
+    group: "max"
+    mode: u=rwx,g=rwx,o=rwx
+    recurse: yes
+  with_items:
+    - /home/max/kubernetes
+    - /home/max/data
+
 - name: "Suppresion de la ligne swap dans /etc/fstab"
   mount:
     name: "{{ item }}"
@@ -89,11 +101,11 @@
       - kubectl
 
 - name: "Initialisation du cluster K8S"
-  shell: kubeadm init --pod-network-cidr=10.244.0.0/16
+  shell: sudo kubeadm init --pod-network-cidr=10.244.0.0/16
   when: ansible_hostname == '4PROJ-UBU18-KUBE1'
 
 - name: "Copie du token K8S"
-  shell: kubeadm token create --print-join-command
+  shell: sudo kubeadm token create --print-join-command
   register: join_command
   when: ansible_hostname == '4PROJ-UBU18-KUBE1'
 
@@ -118,15 +130,3 @@
     name: kubelet
     daemon_reload: yes
     state: restarted
-
-- name: "Création des dossiers kubernetes"
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: "max"
-    group: "max"
-    mode: u=rwx,g=rwx,o=rwx
-    recurse: yes
-  with_items:
-    - /home/max/kubernetes
-    - /home/max/data
