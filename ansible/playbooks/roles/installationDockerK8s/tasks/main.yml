@@ -88,7 +88,20 @@
       - kubeadm 
       - kubectl
 
-- name: Setup kubeconfig for vagrant user
+- name: "Initialisation du cluster K8S"
+  command: kubeadm init --pod-network-cidr=10.244.0.0/16
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1'
+
+- name: "Copie du token K8S"
+  command: kubeadm token create --print-join-command
+  register: join_command
+  when: ansible_hostname == '4PROJ-UBU18-KUBE1'
+
+- name: "Initialisation du cluster K8S"
+  command: sudo {{ join_command.stdout }}
+  when: ansible_hostname in ['4PROJ-UBU18-KUBE2', '4PROJ-UBU18-KUBE3']
+  
+- name: "Mise en place de kubeconfig"
   command: "{{ item }}"
   with_items:
    - mkdir -p /home/max/.kube
