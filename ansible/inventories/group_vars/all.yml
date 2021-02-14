@@ -2,16 +2,16 @@
 user4proj:
   - username: paul
     name: Paul RIVIERE
-    #password: 'hl7NPin74B03kB'
-    password: "$6$MRmkci5Z$mFz5pXWgyWNBLC44VME.EOPxTvEtvN6nZfi0XO5YwjpF1WnUAnd2HbqvWtexPn8U2/rp4ALr0X7GfTXcJDc/Z/"
-    groups: adm,cdrom,dip,plugdev,lxd,sudo
+    password: 'hl7NPin74B03kB'
+    #password: "$6$MRmkci5Z$mFz5pXWgyWNBLC44VME.EOPxTvEtvN6nZfi0XO5YwjpF1WnUAnd2HbqvWtexPn8U2/rp4ALr0X7GfTXcJDc/Z/"
+    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
   - username: maxence
     name: Maxence GRIAS
-    #password: '9PMDtK82Hrhd7i'
-    password: $6$g8Hes3A/N2J6AjGf$vJ6dgMPUX9AltMHjOeFF3PEee2sA65MYEsE2Ja0nK3/rFspPnJSxEX5sl4EkQSar95m4sdKEVc.mZXL8F3b0Z/
-    groups: adm,cdrom,dip,plugdev,lxd,sudo
+    password: '9PMDtK82Hrhd7i'
+    #password: $6$g8Hes3A/N2J6AjGf$vJ6dgMPUX9AltMHjOeFF3PEee2sA65MYEsE2Ja0nK3/rFspPnJSxEX5sl4EkQSar95m4sdKEVc.mZXL8F3b0Z/
+    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
   - username: gaetan
     name: Gaetan MORLET
-    #password: 'l10tFeW07lI80Z'
-    password: $6$2m9WY.bnm3JgBeXl$8BtbOM68iEQYW/nE9WzgaOt2KaAglORajrJLWugP9Dln1wDmD9RR.u8sQRtg29fhnf4j8hCAeSPmr20nCNHNd/
-    groups: adm,cdrom,dip,plugdev,lxd,sudo
+    password: 'l10tFeW07lI80Z'
+    #password: $6$2m9WY.bnm3JgBeXl$8BtbOM68iEQYW/nE9WzgaOt2KaAglORajrJLWugP9Dln1wDmD9RR.u8sQRtg29fhnf4j8hCAeSPmr20nCNHNd/
+    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
