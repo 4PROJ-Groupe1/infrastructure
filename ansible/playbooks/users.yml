@@ -7,7 +7,6 @@
         groups: "{{ item.groups }}"
         shell: "{{ item.shell | default('/bin/bash') }}"
         password: "{{item.password | password_hash('sha512') }}"
-        #password: " {{ item.password }}"
         comment: "{{ item.name | default(omit) }}"
         uid: "{{ item.uid | default(omit) }}"
         createhome: yes
