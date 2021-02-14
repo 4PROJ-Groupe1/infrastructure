@@ -3,7 +3,7 @@ user4proj:
   - username: paul
     name: Paul RIVIERE
     #password: 'hl7NPin74B03kB'
-    password: $6$bAevsLM3hrUPZwt0$uil7wPAHVtFzw/UPULraZxhK.FRb1cTpzsIDqLfY.JfNPJuarrm.ryTo7sYoP2IohCCiLe/wMPs5c.xMNfwxj.
+    password: "$6$MRmkci5Z$mFz5pXWgyWNBLC44VME.EOPxTvEtvN6nZfi0XO5YwjpF1WnUAnd2HbqvWtexPn8U2/rp4ALr0X7GfTXcJDc/Z/"
     groups: adm,cdrom,dip,plugdev,lxd,sudo
   - username: maxence
     name: Maxence GRIAS
