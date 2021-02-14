@@ -3,12 +3,12 @@ user4proj:
   - username: paul
     name: Paul RIVIERE
     password: 'hl7NPin74B03kB'
-    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
+    groups: adm,cdrom,dip,plugdev,lxd,sudo
   - username: maxence
     name: Maxence GRIAS
     password: '9PMDtK82Hrhd7i'
-    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
+    groups: adm,cdrom,dip,plugdev,lxd,sudo
   - username: gaetan
     name: Gaetan MORLET
     password: 'l10tFeW07lI80Z'
-    groups: adm,cdrom,dip,plugdev,lxd,sudo,docker
+    groups: adm,cdrom,dip,plugdev,lxd,sudo
