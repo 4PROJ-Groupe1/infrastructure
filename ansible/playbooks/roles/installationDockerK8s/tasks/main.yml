@@ -42,6 +42,17 @@
     - paul
     - gaetan
 
+- name: "Ajout des utilisateurs dans le sudo"
+  lineinfile:
+    dest: /etc/sudoers
+    line: '{{ item }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  with_items:
+    - max
+    - maxence
+    - paul
+    - gaetan
+
 - name: "Suppresion de la ligne swap dans /etc/fstab"
   mount:
     name: "{{ item }}"
