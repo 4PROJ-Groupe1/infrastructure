@@ -51,3 +51,8 @@ $ git push origin master
 ```git
 $ git merge master
 ```
+
+11. Pour récupérer le repos d'une branche develop
+```git
+$ git pull origin develop
+```
