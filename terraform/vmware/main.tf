@@ -18,13 +18,13 @@ provider "esxi" {
 }
 
 resource "esxi_guest" "createVirtualMachine" {
-  count = 2
+  count = 3
   guest_name = "4PROJ-UBU18-KUBE${count.index + 1}"
   disk_store = "datastore"
   guestos    = "ubuntu-64"
 
   boot_disk_type = "thin"
-  boot_disk_size = "16"
+  boot_disk_size = "50"
 
   memsize            = "4096"
   numvcpus           = "2"
@@ -35,4 +35,11 @@ resource "esxi_guest" "createVirtualMachine" {
     virtual_network = "VLAN-PRODUCTION"
     nic_type        = "vmxnet3"
   }
+
+  guestinfo = {
+  count = 3
+  "metadata" = base64gzip(file("4PROJ-UBU18-KUBE${count.index + 1}-metadata.cfg"))
+  "metadata.encoding" = "gzip+base64"
+  }
+
 }
