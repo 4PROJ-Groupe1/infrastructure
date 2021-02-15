@@ -36,10 +36,4 @@ resource "esxi_guest" "createVirtualMachine" {
     nic_type        = "vmxnet3"
   }
 
-  guestinfo = {
-  count = 3
-  "metadata" = base64gzip(file("4PROJ-UBU18-KUBE${count.index + 1}-metadata.cfg"))
-  "metadata.encoding" = "gzip+base64"
-  }
-
 }
