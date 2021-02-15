@@ -10,6 +10,7 @@
     - "curl"
     - "gnupg-agent"
     - "software-properties-common"
+    - "git"
 
 - name: "Ajout de la clé de signature apt pour docker"
   apt_key:
@@ -31,6 +32,7 @@
     - docker-ce 
     - docker-ce-cli 
     - containerd.io
+    - docker-compose
 
 - name: "Ajout de les utilisateurs dans le groupe docker"
   user:
@@ -115,7 +117,7 @@
   #when: ansible_hostname in ['4PROJ-UBU18-KUBE2', '4PROJ-UBU18-KUBE3']
   #when: ansible_hostname = "4PROJ-UBU18-KUBE2" or ansible_hostname = "4PROJ-UBU18-KUBE3"
   when: ansible_hostname = "4PROJ-UBU18-KUBE2"
-  
+
 - name: "Mise en place de kubeconfig"
   command: "{{ item }}"
   with_items:
