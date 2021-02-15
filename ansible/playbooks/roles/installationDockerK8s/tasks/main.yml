@@ -113,7 +113,8 @@
 - name: "Initialisation du cluster K8S"
   command: sudo {{ join_command.stdout }}
   #when: ansible_hostname in ['4PROJ-UBU18-KUBE2', '4PROJ-UBU18-KUBE3']
-  when: ansible_hostname = "4PROJ-UBU18-KUBE2" or ansible_hostname = "4PROJ-UBU18-KUBE3"
+  #when: ansible_hostname = "4PROJ-UBU18-KUBE2" or ansible_hostname = "4PROJ-UBU18-KUBE3"
+  when: ansible_hostname = "4PROJ-UBU18-KUBE2"
   
 - name: "Mise en place de kubeconfig"
   command: "{{ item }}"
