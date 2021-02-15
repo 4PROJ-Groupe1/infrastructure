@@ -55,6 +55,17 @@
     - paul
     - gaetan
 
+- name: "Déploiement du daemon.json"
+  copy:
+    src: files/daemon.json
+    dest: /etc/docker/daemon.json
+
+- name: "Redémarrage de docker"
+  service:
+    name: docker
+    daemon_reload: yes
+    state: restarted
+
 - name: "Création des dossiers kubernetes"
   file:
     path: "{{ item }}"
