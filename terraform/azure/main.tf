@@ -78,7 +78,7 @@ resource "azurerm_virtual_network_gateway_connection" "AzureTerraformNetworkGate
 }
 
 resource "azurerm_network_interface" "AzureTerraformNIC" {
-  name                = "NIC-4PROJ-UBU18-KUBE3"
+  name                = "NIC-4PROJ-UBU18-KUBE4"
   location            = azurerm_resource_group.AzureTerraformGroup.location
   resource_group_name = azurerm_resource_group.AzureTerraformGroup.name
 
@@ -90,7 +90,7 @@ resource "azurerm_network_interface" "AzureTerraformNIC" {
 }
 
 resource "azurerm_linux_virtual_machine" "AzureTerraformLinuxVM" {
-  name                = "4PROJ-UBU18-KUBE3"
+  name                = "4PROJ-UBU18-KUBE4"
   resource_group_name = azurerm_resource_group.AzureTerraformGroup.name
   location            = azurerm_resource_group.AzureTerraformGroup.location
   size                = "Standard_DS1_v2"
