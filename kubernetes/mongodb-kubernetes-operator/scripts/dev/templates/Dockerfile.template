@@ -1,0 +1,31 @@
+{% if builder %}
+FROM {{builder_image}} AS builder
+
+{% else %}
+FROM {{base_image}}
+{% endif %}
+
+{% block packages -%}
+{% endblock -%}
+
+ENV GO111MODULE=on
+ENV GOPATH ""
+
+WORKDIR /workspace
+COPY go.mod go.sum ./
+RUN go mod download
+
+{% for file in files_to_add %}
+ADD {{file}} {{file}}
+{% endfor %}
+
+# build the binary
+{% block build_binary -%}
+{% endblock -%}
+
+# build and second stage image if necessary
+{% block build_second_stage -%}
+{% endblock -%}
+
+{% block command -%}
+{% endblock -%}
