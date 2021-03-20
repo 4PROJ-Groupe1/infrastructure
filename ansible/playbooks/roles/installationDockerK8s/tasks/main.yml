@@ -124,7 +124,7 @@
   when: ansible_hostname == '4PROJ-UBU18-KUBE1'
 
 - name: "Init K8S"
-  command: '{{ join_command.stdout }}'
+  command: '{{ join_command.stdout[0] }}'
   become: true
   when: ansible_hostname == "4PROJ-UBU18-KUBE2" or ansible_hostname == "4PROJ-UBU18-KUBE3"
 
