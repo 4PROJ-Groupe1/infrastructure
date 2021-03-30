@@ -3,6 +3,8 @@ kind: Namespace
 metadata:
   name: web
 ---
+# kubectl create secret generic regcred --from-file=.dockerconfigjson=/home/max/.docker/config.json --type=kubernetes.io/dockerconfigjson 
+# kubectl get secret regcred --output="jsonpath={.data.\.dockerconfigjson}" -n web | base64 --decode 
 apiVersion: v1
 data:
   .dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImVHRnRlWEE2VEdWMWNuTmxkRFVxIgoJCX0KCX0KfQ==
