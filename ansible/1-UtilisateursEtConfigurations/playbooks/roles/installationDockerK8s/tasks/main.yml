@@ -11,6 +11,8 @@
     - "gnupg-agent"
     - "software-properties-common"
     - "git"
+    - "gcc"
+    - "shc"
 
 - name: "Ajout de la clé de signature apt pour docker"
   apt_key:
