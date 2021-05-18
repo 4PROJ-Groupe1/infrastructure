@@ -1,0 +1,79 @@
+apiVersion: networking.k8s.io/v1beta1 
+kind: Ingress
+metadata:
+  name: ingress-webapp
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts: 
+    - brilliant-market.com
+  rules:
+  - host: brilliant-market.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-app
+          servicePort: 3000
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-webappwww
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - www.brilliant-market.com
+  rules:
+  - host: www.brilliant-market.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-app
+          servicePort: 3000
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-webapi
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - api.brilliant-market.com
+  rules:
+  - host: api.brilliant-market.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-api
+          servicePort: 8082
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-webmonitor
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - monitor.brilliant-market.com
+  rules:
+  - host: monitor.brilliant-market.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-monitor
+          servicePort: 3000

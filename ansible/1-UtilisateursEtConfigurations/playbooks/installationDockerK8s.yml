@@ -1,0 +1,16 @@
+---
+- name: installationDockerK8s
+  hosts: all
+  become: true
+  #become_user: 'root'
+
+  pre_tasks:
+    - debug:
+        msg: 'Installation de docker et K8S'
+
+  roles:
+    - installationDockerK8s
+
+  post_tasks:
+    - debug:
+        msg: 'Installation terminée'

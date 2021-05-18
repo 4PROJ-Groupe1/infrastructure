@@ -1,0 +1,15 @@
+- name: Configuration des comptes utilisateurs
+  hosts: all
+  tasks:
+    - name: Création des comptes
+      user:
+        name: "{{ item.username }}"
+        groups: "{{ item.groups }}"
+        shell: "{{ item.shell | default('/bin/bash') }}"
+        password: "{{item.password | password_hash('sha512') }}"
+        comment: "{{ item.name | default(omit) }}"
+        uid: "{{ item.uid | default(omit) }}"
+        createhome: yes
+        append: yes
+      with_items: "{{ user4proj }}"
+      become: yes
