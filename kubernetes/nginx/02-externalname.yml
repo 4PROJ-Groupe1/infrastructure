@@ -15,6 +15,15 @@ metadata:
 spec:
   type: ExternalName
   externalName: web-api.web.svc.cluster.local
+ ---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-monitor
+  namespace: ingress-nginx
+spec:
+  type: ExternalName
+  externalName: grafana.monitoring.svc.cluster.local
 ---
 kind: Service
 apiVersion: v1
