@@ -15,7 +15,7 @@ metadata:
 spec:
   type: ExternalName
   externalName: web-api.web.svc.cluster.local
- ---
+---
 kind: Service
 apiVersion: v1
 metadata:
