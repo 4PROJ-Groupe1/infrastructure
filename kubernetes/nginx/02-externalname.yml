@@ -15,3 +15,12 @@ metadata:
 spec:
   type: ExternalName
   externalName: web-api.web.svc.cluster.local
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-api-ml
+  namespace: ingress-nginx
+spec:
+  type: ExternalName
+  externalName: web-api-ml.web.svc.cluster.local
