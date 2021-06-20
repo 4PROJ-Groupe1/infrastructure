@@ -66,6 +66,32 @@ spec:
      imagePullSecrets:
        - name: regcred
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapiml
+  namespace: web
+spec:
+  selector:
+    matchLabels:
+      app: web-api-ml
+      tier: backendml
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: web-api-ml
+        tier: backendml
+    spec:
+     containers:
+       - name: web-api-ml
+         image: "xamyp/back-ml:latest"
+         ports:
+           - name: api-ml
+             containerPort: 5000 
+     imagePullSecrets:
+       - name: regcred
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -91,4 +117,17 @@ spec:
     tier: backend
   ports:
   - port: 8082
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-api-ml
+  namespace: web
+spec:
+  selector:
+    app: web-api-ml
+    tier: backendml
+  ports:
+  - port: 5000
     protocol: TCP
