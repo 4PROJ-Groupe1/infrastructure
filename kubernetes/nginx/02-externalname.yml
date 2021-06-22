@@ -33,3 +33,12 @@ metadata:
 spec:
   type: ExternalName
   externalName: web-api-ml.web.svc.cluster.local
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-simulation
+  namespace: ingress-nginx
+spec:
+  type: ExternalName
+  externalName: web-simulation.web.svc.cluster.local
