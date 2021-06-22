@@ -92,6 +92,32 @@ spec:
      imagePullSecrets:
        - name: regcred
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: websimulation
+  namespace: web
+spec:
+  selector:
+    matchLabels:
+      app: web-simulation
+      tier: simulation
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: web-simulation
+        tier: simulation
+    spec:
+     containers:
+       - name: web-simulation
+         image: "xamyp/simulation:latest"
+         ports:
+           - name: web-simu
+             containerPort: 3000 
+     imagePullSecrets:
+       - name: regcred       
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -130,4 +156,17 @@ spec:
     tier: backendml
   ports:
   - port: 5000
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-simulation
+  namespace: web
+spec:
+  selector:
+    app: web-simulation
+    tier: simulation
+  ports:
+  - port: 3000
     protocol: TCP
